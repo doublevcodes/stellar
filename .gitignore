@@ -1,0 +1,14 @@
+# The node_modules directory is for storing dependencies for Stellar.
+/node_modules/
+
+# The dist directory is for storing the compiled output of Stellar.
+/dist/
+
+# The .vscode directory is for storing the user's settings for VSCode.
+/.vscode/
+
+# The .DS_Store file is used by Finder on MacOS to store metadata about the directory.
+.DS_Store
+
+# The .idea directory is for storing the user's Jetbrains editing environment project files.
+/.idea/
