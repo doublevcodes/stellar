@@ -1,8 +1,10 @@
 # The node_modules directory is for storing dependencies for Stellar.
 /node_modules/
 
-# The dist directory is for storing the compiled output of Stellar.
-/dist/
+# The build, .svelte-kit and package directories are for storing the compiled output of Stellar.
+/build
+/.svelte-kit
+/package
 
 # The .vscode directory is for storing the user's settings for VSCode.
 /.vscode/
@@ -12,3 +14,6 @@
 
 # The .idea directory is for storing the user's Jetbrains editing environment project files.
 /.idea/
+
+# A .env file is commonly used to store environment variables. These could be sensitive information.
+.env
