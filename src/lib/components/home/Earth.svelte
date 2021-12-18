@@ -5,23 +5,23 @@
 	let earthSpin = 0;
 	let cloudSpin = 0;
 
-    // Constants for the scene
-    const cameraPosition: SC.Position = [0.75, 0.75, 1.25];
-    const allowZoom = false;
-    const ambientLightingIntensity = 0.6;
-    const directionalLightingPosition: SC.Position = [0, 7, 0];
-    const directionalLightingIntensity = 0.2;
+	// Constants for the scene
+	const cameraPosition: SC.Position = [0.75, 0.75, 1.25];
+	const allowZoom = false;
+	const ambientLightingIntensity = 0.6;
+	const directionalLightingPosition: SC.Position = [0, 7, 0];
+	const directionalLightingIntensity = 0.2;
 
-    // Earth constants
-    const earthRadius = 0.5;
+	// Earth constants
+	const earthRadius = 0.5;
 	const earthSpinSpeed = 0.0005;
-    const earthTexture = '/world/texture.jpg';
-    const earthBumpMap = '/world/bump.jpg';
-    const earthBumpScale = 0.05;
-    const earthSpecularMap = '/world/specular.jpg';
-    const earthSpecularColour = new THREE.Color("grey");
-    const cloudTexture = '/world/clouds.png';
-    const cloudRadius = earthRadius * 1.005;
+	const earthTexture = '/world/texture.jpg';
+	const earthBumpMap = '/world/bump.jpg';
+	const earthBumpScale = 0.05;
+	const earthSpecularMap = '/world/specular.jpg';
+	const earthSpecularColour = new THREE.Color('grey');
+	const cloudTexture = '/world/clouds.png';
+	const cloudRadius = earthRadius * 1.005;
 	const cloudSpinSpeed = earthSpinSpeed * 1.0005;
 
 	SC.onFrame(() => {
@@ -53,5 +53,8 @@
 	<SC.PerspectiveCamera position={cameraPosition} />
 	<SC.OrbitControls enableZoom={allowZoom} />
 	<SC.AmbientLight intensity={ambientLightingIntensity} />
-	<SC.DirectionalLight position={directionalLightingPosition} intensity={directionalLightingIntensity} />
+	<SC.DirectionalLight
+		position={directionalLightingPosition}
+		intensity={directionalLightingIntensity}
+	/>
 </SC.Canvas>

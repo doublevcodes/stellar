@@ -12,7 +12,10 @@
 			>
 				Stellar
 			</h1>
-			<p>Stellar</p>
+			<p>
+				Stellar is an interactive way of exploring our solar system. It provides
+				information on planets and the Sun in a fun and easy to use way.<br />
+			</p>
 		</article>
 		<section class="relative h-[95%]">
 			<Earth />
