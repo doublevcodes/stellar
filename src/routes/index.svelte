@@ -17,8 +17,6 @@
 				information on planets and the Sun in a fun and easy to use way.<br />
 			</p>
 		</article>
-		<section class="relative h-[95%]">
-			<Earth />
-		</section>
+		<Earth />
 	</div>
 </main>
