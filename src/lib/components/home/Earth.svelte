@@ -20,12 +20,12 @@
 	// Earth constants
 	let earthRadius = spring(0.5);
 	const earthSpinSpeed = 0.0005;
-	const earthTexture = '/earth/texture.jpg';
-	const earthBumpMap = '/earth/bump.jpg';
+	const earthTexture = '/earth/texture.avif';
+	const earthBumpMap = '/earth/bump.avif';
 	const earthBumpScale = 0.05;
-	const earthSpecularMap = '/earth/specular.jpg';
+	const earthSpecularMap = '/earth/specular.avif';
 	const earthSpecularColour = new THREE.Color('grey');
-	const cloudTexture = '/earth/clouds.png';
+	const cloudTexture = '/earth/clouds.avif';
 	let cloudRadius = spring($earthRadius * 1.005);
 	const cloudSpinSpeed = earthSpinSpeed * 1.0005;
 
