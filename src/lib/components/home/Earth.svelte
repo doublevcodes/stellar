@@ -1,5 +1,40 @@
-<script lang="ts">
+<script lang="ts" context="module">
 	import * as THREE from 'three';
+
+	import type { LoadInput, LoadOutput } from '@sveltejs/kit';
+
+	/** @type import("@sveltejs/kit").Load */
+	export async function load({ page, fetch, session, stuff }: LoadInput): Promise<LoadOutput> {
+		const earthTexture = '/earth/texture.avif';
+		const earthBumpMap = '/earth/bump.avif';
+		const earthBumpScale = 0.05;
+		const earthSpecularMap = '/earth/specular.avif';
+		const earthSpecularColour = new THREE.Color('grey');
+		const cloudTexture = '/earth/clouds.avif';
+
+		const earthMaterial = new THREE.MeshPhongMaterial({
+			map: new THREE.TextureLoader().load(earthTexture),
+			bumpMap: new THREE.TextureLoader().load(earthBumpMap),
+			bumpScale: earthBumpScale,
+			specularMap: new THREE.TextureLoader().load(earthSpecularMap),
+			specular: earthSpecularColour
+		})
+
+		const cloudMaterial = new THREE.MeshPhongMaterial({
+			map: new THREE.TextureLoader().load(cloudTexture),
+			transparent: true
+		})
+
+		return {
+			props: {
+				earthMaterial: earthMaterial,
+				cloudMaterial: cloudMaterial
+			}
+		}
+	}
+</script>
+
+<script lang="ts">
 	import * as SC from 'svelte-cubed';
 
 	// Spring is used to provide a nice animation for the Earth increasing and decreasing in
@@ -18,14 +53,10 @@
 	const directionalLightingIntensity = 0.2;
 
 	// Earth constants
+	export let earthMaterial: THREE.MeshPhongMaterial;
+	export let cloudMaterial: THREE.MeshPhongMaterial;
 	let earthRadius = spring(0.5);
 	const earthSpinSpeed = 0.0005;
-	const earthTexture = '/earth/texture.avif';
-	const earthBumpMap = '/earth/bump.avif';
-	const earthBumpScale = 0.05;
-	const earthSpecularMap = '/earth/specular.avif';
-	const earthSpecularColour = new THREE.Color('grey');
-	const cloudTexture = '/earth/clouds.avif';
 	let cloudRadius = spring($earthRadius * 1.005);
 	const cloudSpinSpeed = earthSpinSpeed * 1.0005;
 
@@ -60,21 +91,12 @@
 	<SC.Canvas>
 		<SC.Mesh
 			geometry={new THREE.SphereGeometry($earthRadius, 32, 32)}
-			material={new THREE.MeshPhongMaterial({
-				map: new THREE.TextureLoader().load(earthTexture),
-				bumpMap: new THREE.TextureLoader().load(earthBumpMap),
-				bumpScale: earthBumpScale,
-				specularMap: new THREE.TextureLoader().load(earthSpecularMap),
-				specular: earthSpecularColour
-			})}
+			material={earthMaterial}
 			rotation={[0, earthSpin, 0]}
 		/>
 		<SC.Mesh
 			geometry={new THREE.SphereGeometry($cloudRadius, 32, 32)}
-			material={new THREE.MeshPhongMaterial({
-				map: new THREE.TextureLoader().load(cloudTexture),
-				transparent: true
-			})}
+			material={cloudMaterial}
 			rotation={[0, cloudSpin, 0]}
 		/>
 		<SC.PerspectiveCamera position={cameraPosition} />
