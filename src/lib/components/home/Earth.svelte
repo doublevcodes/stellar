@@ -1,5 +1,40 @@
-<script lang="ts">
+<script lang="ts" context="module">
 	import * as THREE from 'three';
+
+	import type { LoadInput, LoadOutput } from '@sveltejs/kit';
+
+	/** @type import("@sveltejs/kit").Load */
+	export async function load({ page, fetch, session, stuff }: LoadInput): Promise<LoadOutput> {
+		const earthTexture = '/earth/texture.avif';
+		const earthBumpMap = '/earth/bump.avif';
+		const earthBumpScale = 0.05;
+		const earthSpecularMap = '/earth/specular.avif';
+		const earthSpecularColour = new THREE.Color('grey');
+		const cloudTexture = '/earth/clouds.avif';
+
+		const earthMaterial = new THREE.MeshPhongMaterial({
+			map: new THREE.TextureLoader().load(earthTexture),
+			bumpMap: new THREE.TextureLoader().load(earthBumpMap),
+			bumpScale: earthBumpScale,
+			specularMap: new THREE.TextureLoader().load(earthSpecularMap),
+			specular: earthSpecularColour
+		})
+
+		const cloudMaterial = new THREE.MeshPhongMaterial({
+			map: new THREE.TextureLoader().load(cloudTexture),
+			transparent: true
+		})
+
+		return {
+			props: {
+				earthMaterial: earthMaterial,
+				cloudMaterial: cloudMaterial
+			}
+		}
+	}
+</script>
+
+<script lang="ts">
 	import * as SC from 'svelte-cubed';
 	import { onMount } from 'svelte';
 	import { spring } from 'svelte/motion';
