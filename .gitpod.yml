@@ -1,5 +1,8 @@
+image:
+  file: .gitpod.Dockerfile
+
 tasks:
-  - init: npm i -g pnpm && pnpm install
+  - init: pnpm install && pnpm dev
     command: pnpm dev
 
 ports:
