@@ -1,0 +1,14 @@
+tasks:
+  - init: npm i -g pnpm && pnpm install
+    command: pnpm dev
+
+ports:
+  - port: 3000
+    onOpen: open-browser
+    visibility: public
+
+vscode:
+  extensions:
+    - svelte.svelte-vscode
+    - bradlc.vscode-tailwindcss
+    - heybourn.headwind
