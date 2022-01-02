@@ -1,6 +1,3 @@
-<script lang="ts">
-</script>
-
 <header class="flex flex-row items-center h-[5%] p-5 text-white">
 	<div class="flex items-center p-2 mr-auto">
 		<svg
@@ -22,6 +19,6 @@
 	<button
 		class="p-2 duration-500 border-b hover:bg-white hover:text-black hover:rounded-md"
 	>
-		Enter the solar system &rarr;
+		<a href="/app">Enter the solar system &rarr;</a>
 	</button>
 </header>
