@@ -1,1 +1,7 @@
-<h1>Welcome to the explorer</h1>
+<script>
+    import Sidebar from "$lib/components/explorer/Sidebar.svelte";
+</script>
+
+<main class="h-screen text-white bg-black">
+    <Sidebar />
+</main>
