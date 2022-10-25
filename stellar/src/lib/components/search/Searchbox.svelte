@@ -1,0 +1,1 @@
+<input placeholder="Search for a celestial body..." class="w-full p-4 text-white bg-white/10 rounded-tr-md placeholder:font-thin" type="text"/>
